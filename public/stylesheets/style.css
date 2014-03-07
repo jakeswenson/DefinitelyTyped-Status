@@ -1,0 +1,14 @@
+body {
+  padding: 50px;
+}
+#results th {
+  text-align: center;
+  vertical-align: middle;
+}
+#results td.file {
+  vertical-align: middle;
+}
+#results td.exitCode {
+  vertical-align: middle;
+  text-align: center;
+}

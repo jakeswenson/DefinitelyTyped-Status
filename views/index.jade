@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    div.panel.panel-primary
+        div.panel-heading: h1 Definitely Typed Files with latest compiler
+        p.panel-body
+            span| Compilation results using files from github updated at <code>#{updatedAt}</code> (commit 
+                code: a(href='https://github.com/borisyankov/DefinitelyTyped/commit/' + lastCommit)= lastCommit
+                | )
+            br
+            span
+                | Compiled in 
+                code= compileTime 
+                    |  seconds.
+            span|  Compilation started on <code>#{compileStart}</code>
+        table.table.table-hover.table-bordered#results
+            thead
+                tr
+                    th Filename
+                    th Exit Code
+                    th StdErr
+            tbody
+                each compilation in data
+                    tr(class=compilation.error ? 'danger' : '')
+                        td.file: a(href=compilation.url)= compilation.file
+                        td.exitCode= compilation.exitCode
+                        td: pre.pre-scrollable(class=!compilation.error && 'hidden')= compilation.stderr
